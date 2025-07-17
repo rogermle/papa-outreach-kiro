@@ -157,7 +157,7 @@ export const fileUploadSchema = z
 // After action report validation schemas
 export const afterActionReportSchema = z.object({
   eventId: z.string().min(1, "Event ID is required"),
-  reportData: z.record(z.unknown()),
+  reportData: z.record(z.string(), z.unknown()),
 });
 
 // Report filters validation schemas

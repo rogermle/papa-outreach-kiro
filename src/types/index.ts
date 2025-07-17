@@ -404,7 +404,7 @@ export interface LoadingState {
 }
 
 // Hook Return Types
-export interface UseAuthReturn extends AuthContextType {}
+export type UseAuthReturn = AuthContextType;
 
 export interface UseEventsReturn extends LoadingState {
   events: Event[];
@@ -416,7 +416,11 @@ export interface UseEventsReturn extends LoadingState {
 
 export interface UseVolunteerSignupsReturn extends LoadingState {
   signups: VolunteerSignup[];
-  signUp: (signup: VolunteerSignupInput) => Promise<VolunteerSignup>;
+  signUp: (signup: {
+    timeSlotId: string;
+    eventId: string;
+    flightInfo?: FlightInfo;
+  }) => Promise<VolunteerSignup>;
   cancelSignup: (id: string) => Promise<void>;
   getUserSignups: (userId: string) => Promise<VolunteerSignup[]>;
 }
